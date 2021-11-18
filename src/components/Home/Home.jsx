@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import Image05 from '../../assets/images/image05.png';
 import Text from '../shared/Text';
 import Title from '../shared/Title';
@@ -22,8 +23,18 @@ const Home = () => (
       <Image src={Image05} alt="imagem" />
     </BoxTop>
     <BoxBottom>
-      <Button>Quero começar</Button>
-      <Button variant="text">Já sou grato</Button>
+      <Link to="/cadastro">
+        <Button>
+          Quero começar
+        </Button>
+      </Link>
+
+      <Link to="/entrar">
+        <Button variant="text">
+          Já sou grato
+        </Button>
+      </Link>
+
     </BoxBottom>
   </Container>
 );

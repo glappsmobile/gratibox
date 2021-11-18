@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Container from '../shared/Container';
 import Group from '../shared/Group';
 import Title from '../shared/Title';
@@ -19,10 +20,11 @@ const SignIn = () => (
       <Button size="big">
         Entrar
       </Button>
-
-      <Button variant="text">
-        Ainda não sou grato
-      </Button>
+      <Link to="/cadastro">
+        <Button variant="text">
+          Ainda não sou grato
+        </Button>
+      </Link>
     </Group>
 
   </Container>

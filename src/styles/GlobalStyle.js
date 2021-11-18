@@ -35,7 +35,13 @@ const GlobalStyle = createGlobalStyle`
     body {
     line-height: 1;
     font-family: Roboto, sans-serif;
-    color: #000000;
+    color: #fff;
+    min-height: 100vh;
+    height: 100%;
+    background-color: #6d7ce4;
+    }
+    html {
+        height: 100%;
     }
     ol, ul {
     list-style: none;
@@ -59,10 +65,15 @@ const GlobalStyle = createGlobalStyle`
         border: none;
     }
     strong { font-weight: bold}
-    a, :link{
+    a{
         text-decoration: none;
         color: inherit;
         cursor: pointer;
+    }
+    h1 {
+        font-weight: 500;
+        line-height: 33px;
+        font-size: 28px;
     }
 `;
 export default GlobalStyle;

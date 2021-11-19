@@ -1,16 +1,18 @@
 import styled from 'styled-components';
 
 const Button = styled.button`
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  margin: 15px auto 0 auto;
+  cursor: pointer;
+
   background: ${({ variant }) => {
     if (variant === 'text') {
       return 'none';
     }
     return '#8C97EA';
   }};
-  
-  border-radius: 10px;
-  color: white;
-  font-weight: bold;
   min-width: ${({ size }) => {
     if (size === 'big') {
       return '237px';
@@ -29,7 +31,6 @@ const Button = styled.button`
     }
     return '18px';
   }};
-  margin: 15px auto 0 auto;
 `;
 
 export default Button;

@@ -27,7 +27,7 @@ const Plans = () => {
         <Text variant="contrast" paddingX="20px" marginTop="21px">
           Você recebe um box por semana. Ideal para quem quer exercer a gratidão todos os dias.
         </Text>
-        <Button marginTop="34px" fontSize="24px">
+        <Button marginTop="26px" fontSize="24px">
           Assinar
         </Button>
       </Card>
@@ -40,7 +40,7 @@ const Plans = () => {
         <Text variant="contrast" paddingX="20px" marginTop="17px">
           Ideal para quem está começando agora.
         </Text>
-        <Button marginTop="20px" fontSize="24px">
+        <Button marginTop="12px" fontSize="24px">
           Assinar
         </Button>
       </Card>

@@ -5,6 +5,7 @@ import Container from '../shared/Container';
 import Title from '../shared/Title';
 import Text from '../shared/Text';
 import Button from '../shared/Button';
+import LoadingPage from '../shared/LoadingPage';
 import Image04 from '../../assets/images/image04.png';
 import Image02 from '../../assets/images/image02.png';
 import UserContext from '../../contexts/UserContext';
@@ -50,7 +51,7 @@ const Plans = () => {
       </Card>
     </Container>
   ) : (
-    <Container />
+    <LoadingPage />
   );
 };
 

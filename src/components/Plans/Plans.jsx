@@ -5,6 +5,7 @@ import Title from '../shared/Title';
 import Text from '../shared/Text';
 import Button from '../shared/Button';
 import Image04 from '../../assets/images/image04.png';
+import Image02 from '../../assets/images/image02.png';
 
 const Plans = () => {
   const user = {
@@ -12,7 +13,7 @@ const Plans = () => {
   };
 
   return user ? (
-    <Container paddingX="11px">
+    <Container paddingX="11px" paddingY="60px">
       <Title>
         Bom te ver por aqui, @
         {user.name}
@@ -30,6 +31,19 @@ const Plans = () => {
           Assinar
         </Button>
       </Card>
+
+      <Card>
+        <Image src={Image02} alt="imagem" />
+        <Text variant="contrast" paddingX="20px" marginTop="21px">
+          Você recebe um box por mês.
+        </Text>
+        <Text variant="contrast" paddingX="20px" marginTop="17px">
+          Ideal para quem está começando agora.
+        </Text>
+        <Button marginTop="20px" fontSize="24px">
+          Assinar
+        </Button>
+      </Card>
     </Container>
   ) : (
     <Container />
@@ -38,6 +52,7 @@ const Plans = () => {
 
 const Card = styled.div`
   width: 100%;
+  max-width: 470px;
   height: 400px;
   background-color: #E5CDB3;
   border-radius: 25px;
@@ -47,7 +62,6 @@ const Card = styled.div`
 const Image = styled.img`
   height: 219px;
   width: 100%;
-  object-fit: fill;
 `;
 
 export default Plans;

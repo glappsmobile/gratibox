@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import Container from '../shared/Container';
@@ -8,9 +8,11 @@ import Button from '../shared/Button';
 import Input from '../shared/Input';
 import Form from '../shared/Form';
 import { signIn } from '../../services/gratibox.services';
+import UserContext from '../../contexts/UserContext';
 
 const SignIn = () => {
   const navigate = useNavigate();
+  const { setUser } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
@@ -28,12 +30,12 @@ const SignIn = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log('teste');
     setIsLoading(true);
     signIn(formData)
       .then((response) => {
         setIsLoading(false);
         localStorage.setItem('token', JSON.stringify(response.data.token));
+        setUser({ ...response.data });
         navigate('/home');
       })
       .catch((error) => {

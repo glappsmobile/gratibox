@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import Container from '../shared/Container';
 import Title from '../shared/Title';
@@ -6,18 +6,16 @@ import Text from '../shared/Text';
 import Button from '../shared/Button';
 import Image04 from '../../assets/images/image04.png';
 import Image02 from '../../assets/images/image02.png';
+import UserContext from '../../contexts/UserContext';
 
 const Plans = () => {
-  const user = {
-    name: 'Glauco Villas Boas',
-  };
+  const { user } = useContext(UserContext);
 
   return user ? (
-    <Container paddingX="11px" paddingY="60px">
+    <Container paddingX="11px" paddingY="40px">
       <Title>
         Bom te ver por aqui, @
         {user.name}
-        .
       </Title>
       <Text marginTop="22px" fontWeight="300">
         Você ainda não assinou um plano, que tal começar agora?
@@ -56,7 +54,7 @@ const Card = styled.div`
   height: 400px;
   background-color: #E5CDB3;
   border-radius: 25px;
-  margin-top: 40px;
+  margin-top: 30px;
 `;
 
 const Image = styled.img`

@@ -70,10 +70,5 @@ const GlobalStyle = createGlobalStyle`
         color: inherit;
         cursor: pointer;
     }
-    h1 {
-        font-weight: 500;
-        line-height: 33px;
-        font-size: 28px;
-    }
 `;
 export default GlobalStyle;

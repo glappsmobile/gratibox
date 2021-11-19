@@ -15,26 +15,19 @@ const Home = () => (
   >
     <BoxTop>
       <Title>
-        Bem vindo ao GratiBox
+        Ooops!
       </Title>
       <Text fontWeight="300" marginTop="40px" paddingX="5px">
-        Receba em casa um box com chás, produtos organicos, incensos e muito mais...
+        Não encontramos a página que você estava procurando.
       </Text>
       <Image src={Image05} alt="Imagem de boas vindas" />
     </BoxTop>
     <BoxBottom>
-      <Link to="/cadastro">
+      <Link to="/">
         <Button>
-          Quero começar
+          Ir para home
         </Button>
       </Link>
-
-      <Link to="/entrar">
-        <Button variant="text">
-          Já sou grato
-        </Button>
-      </Link>
-
     </BoxBottom>
   </Container>
 );

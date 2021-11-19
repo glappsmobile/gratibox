@@ -124,7 +124,7 @@ const SignUp = () => {
         </Group>
 
         <Group marginTop="40px">
-          <Button type="submit" size="big" isLoading={isLoading}>
+          <Button type="submit" size="large" isLoading={isLoading}>
             Cadastrar
           </Button>
 

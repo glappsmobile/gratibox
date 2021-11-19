@@ -36,7 +36,7 @@ const SignIn = () => {
         setIsLoading(false);
         localStorage.setItem('token', JSON.stringify(response.data.token));
         setUser({ ...response.data });
-        navigate('/home');
+        navigate('/planos');
       })
       .catch((error) => {
         const { status } = error.response;
@@ -96,7 +96,7 @@ const SignIn = () => {
 
         <Group marginTop="40px">
           <Button
-            size="big"
+            size="large"
             type="submit"
             isLoading={isLoading}
           >

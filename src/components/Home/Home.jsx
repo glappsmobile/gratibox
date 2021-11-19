@@ -44,6 +44,8 @@ const BoxTop = styled.div`
   padding-top: 50px;
   text-align: center;
   background-color: #6d7ce4;
+  width: 79vh;
+  max-width: 100vw;
 `;
 
 const BoxBottom = styled.div`

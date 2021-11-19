@@ -5,6 +5,7 @@ import Group from '../shared/Group';
 import Title from '../shared/Title';
 import Button from '../shared/Button';
 import Input from '../shared/Input';
+import PasswordInput from '../shared/PasswordInput';
 import Form from '../shared/Form';
 
 const SignUp = () => {
@@ -45,7 +46,8 @@ const SignUp = () => {
             value={formData.email}
             required
           />
-          <Input
+
+          <PasswordInput
             placeholder="Senha"
             minLength="6"
             type="password"
@@ -53,7 +55,8 @@ const SignUp = () => {
             value={formData.password}
             required
           />
-          <Input
+
+          <PasswordInput
             placeholder="Confirmar senha"
             minLength="6"
             type="password"

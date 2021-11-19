@@ -6,29 +6,29 @@ import flexify from '../../styles/utils/flexify';
 
 const Button = ({
   isLoading, variant, size, children,
-}) => {
-  console.log(children);
-  return (
-    <StyledButton
-      isLoading={isLoading}
-      variant={variant}
-      size={size}
-      disabled={isLoading}
-    >
-      {isLoading ? (
-        <Ellipsis color="white" />
-      ) : (
-        children
-      )}
-    </StyledButton>
-  );
-};
+}) => (
+  <StyledButton
+    isLoading={isLoading}
+    variant={variant}
+    size={size}
+    disabled={isLoading}
+  >
+    {isLoading ? (
+      <Ellipsis color="white" />
+    ) : (
+      children
+    )}
+  </StyledButton>
+);
 
 Button.propTypes = {
   isLoading: PropTypes.bool,
   variant: PropTypes.string,
   size: PropTypes.string,
-  children: PropTypes.arrayOf(PropTypes.any),
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.any),
+    PropTypes.string,
+  ]),
 };
 
 Button.defaultProps = {

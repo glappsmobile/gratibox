@@ -7,7 +7,7 @@ import Title from '../shared/Title';
 import Button from '../shared/Button';
 import Input from '../shared/Input';
 import Form from '../shared/Form';
-import signUp from '../../services/gratibox.services';
+import { signUp } from '../../services/gratibox.services';
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -124,7 +124,7 @@ const SignUp = () => {
         </Group>
 
         <Group marginTop="40px">
-          <Button size="big" isLoading={isLoading}>
+          <Button type="submit" size="big" isLoading={isLoading}>
             Cadastrar
           </Button>
 

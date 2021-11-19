@@ -7,6 +7,7 @@ import Button from '../shared/Button';
 import Input from '../shared/Input';
 import PasswordInput from '../shared/PasswordInput';
 import Form from '../shared/Form';
+import signUp from '../../services/gratibox.services';
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -22,6 +23,15 @@ const SignUp = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    signUp({
+      name: formData.name,
+      email: formData.email,
+      password: formData.password,
+    }).then((response) => {
+      console.log(response);
+    }).catch((error) => {
+      console.error(error.response);
+    });
     console.log(formData);
   };
 

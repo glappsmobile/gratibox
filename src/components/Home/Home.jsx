@@ -20,7 +20,7 @@ const Home = () => (
       <Text fontWeight="300" marginTop="40px" paddingX="5px">
         Receba em casa um box com chás, produtos organicos, incensos e muito mais...
       </Text>
-      <Image src={Image05} alt="imagem" />
+      <Image src={Image05} alt="Imagem de boas vindas" />
     </BoxTop>
     <BoxBottom>
       <Link to="/cadastro">

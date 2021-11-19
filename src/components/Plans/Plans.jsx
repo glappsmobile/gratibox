@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Container from '../shared/Container';
 import Title from '../shared/Title';
@@ -10,8 +11,13 @@ import UserContext from '../../contexts/UserContext';
 
 const Plans = () => {
   const { user } = useContext(UserContext);
+  const navigate = useNavigate();
 
-  return user ? (
+  if (user && user.unauthorized) {
+    navigate('/');
+  }
+
+  return (user && !user.unauthorized) ? (
     <Container paddingX="11px" paddingY="40px">
       <Title>
         Bom te ver por aqui, @

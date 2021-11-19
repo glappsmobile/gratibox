@@ -15,11 +15,14 @@ const App = () => {
     if (token) {
       getUser(token)
         .then((response) => {
-          setUser({ ...response.data, token });
+          setUser({ ...response.data, token, unauthorized: false });
         })
         .catch(() => {
           localStorage.removeItem('token');
+          setUser({ unauthorized: true });
         });
+    } else {
+      setUser({ unauthorized: true });
     }
   }, []);
 

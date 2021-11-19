@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { AiFillEyeInvisible, AiFillEye } from 'react-icons/ai';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import absolute from '../../styles/utils/absolute';
-import Input from './Input';
 
 const EyeIcon = ({ isVisible, setIsVisible }) => (
   <IconContainer onClick={() => setIsVisible((state) => !state)}>
@@ -20,25 +19,8 @@ EyeIcon.propTypes = {
   setIsVisible: PropTypes.func.isRequired,
 };
 
-const PasswordInput = (props) => {
-  const [isVisible, setIsVisible] = useState(false);
-  return (
-    <InputWrapper>
-      <Input
-        {...props}
-        type={isVisible ? 'text' : 'password'}
-      />
-      <EyeIcon isVisible={isVisible} setIsVisible={setIsVisible} />
-    </InputWrapper>
-  );
-};
-
-const InputWrapper = styled.div`
-  position: relative;
-`;
-
 const IconContainer = styled.div`
-    ${absolute('0', '10px', '0', null)}
+    ${absolute('5px', '10px', '0', null)}
     margin: auto;
     color: #5064ac;
     font-size: 30px;
@@ -46,4 +28,4 @@ const IconContainer = styled.div`
     cursor: pointer;
 `;
 
-export default PasswordInput;
+export default EyeIcon;

@@ -1,16 +1,24 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import Container from '../shared/Container';
 import Group from '../shared/Group';
 import Title from '../shared/Title';
 import Button from '../shared/Button';
 import Input from '../shared/Input';
-import PasswordInput from '../shared/PasswordInput';
 import Form from '../shared/Form';
 import signUp from '../../services/gratibox.services';
 
 const SignUp = () => {
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  });
+  const [errors, setErrors] = useState({
     name: '',
     email: '',
     password: '',
@@ -18,21 +26,53 @@ const SignUp = () => {
   });
 
   const handleChange = (prop) => (event) => {
+    setErrors({ ...errors, [prop]: '' });
     setFormData({ ...formData, [prop]: event.target.value });
   };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    signUp({
-      name: formData.name,
-      email: formData.email,
-      password: formData.password,
-    }).then((response) => {
-      console.log(response);
-    }).catch((error) => {
-      console.error(error.response);
-    });
-    console.log(formData);
+    const {
+      name, email, password, confirmPassword,
+    } = formData;
+
+    if (password !== confirmPassword) {
+      setErrors({
+        password: 'As senhas não coincidem',
+        confirmPassword: 'As senhas não coincidem',
+      });
+      return;
+    }
+    setIsLoading(true);
+    signUp({ name, email, password })
+      .then(() => {
+        setIsLoading(false);
+        Swal.fire({
+          title: 'Sucesso',
+          text: 'Cadastro realizado!',
+          icon: 'success',
+          confirmButtonColor: '#6d7ce4',
+          confirmButtonText: 'Entrar',
+        }).then(() => {
+          navigate('/entrar');
+        });
+      })
+      .catch((error) => {
+        const { status } = error.response;
+        setIsLoading(false);
+
+        if (status === 409) {
+          setErrors({
+            email: 'E-mail já registrado ',
+          });
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Ocorreu um erro ao realizar o seu cadastro',
+          });
+        }
+      });
   };
 
   return (
@@ -47,37 +87,44 @@ const SignUp = () => {
             type="text"
             onChange={handleChange('name')}
             value={formData.name}
+            error={errors.name}
             required
           />
+
           <Input
             placeholder="Email"
             type="email"
             onChange={handleChange('email')}
             value={formData.email}
+            error={errors.email}
             required
           />
 
-          <PasswordInput
+          <Input
             placeholder="Senha"
             minLength="6"
             type="password"
             onChange={handleChange('password')}
             value={formData.password}
+            error={errors.password}
             required
+            password
           />
 
-          <PasswordInput
+          <Input
             placeholder="Confirmar senha"
             minLength="6"
             type="password"
             onChange={handleChange('confirmPassword')}
             value={formData.confirmPassword}
+            error={errors.confirmPassword}
             required
+            password
           />
         </Group>
 
         <Group marginTop="40px">
-          <Button size="big">
+          <Button size="big" isLoading={isLoading}>
             Cadastrar
           </Button>
 

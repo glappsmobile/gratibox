@@ -5,7 +5,6 @@ import Group from '../shared/Group';
 import Title from '../shared/Title';
 import Button from '../shared/Button';
 import Input from '../shared/Input';
-import PasswordInput from '../shared/PasswordInput';
 import Form from '../shared/Form';
 
 const SignIn = () => {
@@ -37,12 +36,13 @@ const SignIn = () => {
             value={formData.email}
             required
           />
-          <PasswordInput
+          <Input
             type="password"
             placeholder="Senha"
             onChange={handleChange('password')}
             value={formData.password}
             required
+            password
           />
         </Form>
       </Group>

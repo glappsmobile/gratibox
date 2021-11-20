@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Container from '../shared/Container';
 import Title from '../shared/Title';
@@ -28,26 +28,31 @@ const Plans = () => {
         Você ainda não assinou um plano, que tal começar agora?
       </Text>
       <Card>
-        <Image src={Image04} alt="imagem" />
+        <Image src={Image04} alt="Plano semanal" />
         <Text variant="contrast" paddingX="20px" marginTop="21px">
           Você recebe um box por semana. Ideal para quem quer exercer a gratidão todos os dias.
         </Text>
-        <Button marginTop="26px" fontSize="24px">
-          Assinar
-        </Button>
+        <Link to="/assinar">
+          <Button marginTop="26px" fontSize="24px">
+            Assinar
+          </Button>
+        </Link>
+
       </Card>
 
       <Card>
-        <Image src={Image02} alt="imagem" />
+        <Image src={Image02} alt="Plano mensal" />
         <Text variant="contrast" paddingX="20px" marginTop="21px">
           Você recebe um box por mês.
         </Text>
         <Text variant="contrast" paddingX="20px" marginTop="17px">
           Ideal para quem está começando agora.
         </Text>
-        <Button marginTop="12px" fontSize="24px">
-          Assinar
-        </Button>
+        <Link to="/assinar">
+          <Button marginTop="12px" fontSize="24px">
+            Assinar
+          </Button>
+        </Link>
       </Card>
     </Container>
   ) : (

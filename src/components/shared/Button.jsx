@@ -87,8 +87,8 @@ const StyledButton = styled.button`
     return text('white', 'bold', fontSize);
   }};
 
-  margin-bottom: ${({ margin }) => spacing(margin)};
-
+  margin-bottom: ${({ margin, marginBottom }) => (margin ? spacing(margin) : spacing(marginBottom))};
+  margin-top: ${({ marginTop }) => spacing(marginTop)};
 `;
 
 export default Button;

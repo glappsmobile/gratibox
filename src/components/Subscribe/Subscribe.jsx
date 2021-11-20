@@ -28,12 +28,12 @@ const Subscribe = () => {
   }
 
   return (user && !user.unauthorized) ? (
-    <Container paddingX="11px">
+    <Container paddingX="normal">
       <Title>
         Bom te ver por aqui, @
         {user.name}
       </Title>
-      <Text marginTop="22px" fontWeight="300">
+      <Text marginTop="big" fontWeight="300">
         “Agradecer é arte de atrair coisas boas”
       </Text>
       <Card>
@@ -69,7 +69,7 @@ const Subscribe = () => {
         </Group>
 
       </Card>
-      <Button marginTop="12px" fontSize="24px">
+      <Button marginTop="big" fontSize="24px">
         Próximo
       </Button>
     </Container>

@@ -8,9 +8,9 @@ const Container = styled.div`
   width: fit-content;
   min-height: 100vh;
   margin: auto;
-  margin-top: ${({ marginTop }) => spacing(marginTop) || 0};
+  margin-top: ${({ marginTop }) => spacing(marginTop)};
   background: ${({ background }) => (background ? colorPicker(background) : colorPicker('primary'))};
-  padding: ${({ paddingX, paddingY }) => `${(spacing(paddingY) || 0)} ${(spacing(paddingX) || 0)}`};
+  padding: ${({ paddingX, paddingY }) => `${spacing(paddingY)} ${spacing(paddingX)}`};
 `;
 
 export default Container;

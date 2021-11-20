@@ -22,7 +22,7 @@ const text = (color, weight, size) => css`
       case 'huge':
         return '36px';
       default:
-        return '18px';
+        return (size !== undefined) ? size : '18px';
     }
   }};
 `;

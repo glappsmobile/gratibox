@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import spacing from '../../styles/utils/spacing';
+import text from '../../styles/utils/text';
 
 const Title = styled.h1`
+  ${text('white', 'bold', '26px')}
   margin-top: ${({ marginTop }) => spacing(marginTop) || 0};
   margin-bottom: ${({ marginBottom }) => spacing(marginBottom) || 0};
   text-align: center;
-  font-weight: 700;
   line-height: 33px;
-  font-size: 26px;
 `;
 
 export default Title;

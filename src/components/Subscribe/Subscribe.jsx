@@ -33,7 +33,7 @@ const Subscribe = () => {
         Bom te ver por aqui, @
         {user.name}
       </Title>
-      <Text marginTop="big" fontWeight="300">
+      <Text marginTop="big" variant="thin">
         “Agradecer é arte de atrair coisas boas”
       </Text>
       <Card>

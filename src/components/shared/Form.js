@@ -4,8 +4,8 @@ import spacing from '../../styles/utils/spacing';
 
 const Form = styled.form`
   ${({ flexProps }) => (flexProps ? flexify(flexProps) : flexify())}
-  margin-top: ${({ marginTop }) => spacing(marginTop) || 0};
-  margin-bottom: ${({ marginBottom }) => spacing(marginBottom) || 0};
+  margin-top: ${({ marginTop }) => spacing(marginTop)};
+  margin-bottom: ${({ marginBottom }) => spacing(marginBottom)};
 `;
 
 export default Form;

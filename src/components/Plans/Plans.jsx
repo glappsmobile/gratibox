@@ -24,7 +24,7 @@ const Plans = () => {
         Bom te ver por aqui, @
         {user.name}
       </Title>
-      <Text marginTop="big" fontWeight="300">
+      <Text marginTop="big" variant="thin">
         Você ainda não assinou um plano, que tal começar agora?
       </Text>
       <Card>

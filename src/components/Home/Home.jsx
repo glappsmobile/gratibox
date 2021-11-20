@@ -18,7 +18,7 @@ const Home = () => (
         Bem vindo ao GratiBox
       </Title>
       <Text
-        fontWeight="300"
+        variant="thin"
         marginTop="huge"
         paddingX="small"
       >

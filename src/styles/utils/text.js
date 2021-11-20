@@ -8,6 +8,8 @@ const text = (color, weight, size) => css`
     switch (weight) {
       case 'bold':
         return '700';
+      case 'thin':
+        return '300';
       default:
         return '400';
     }

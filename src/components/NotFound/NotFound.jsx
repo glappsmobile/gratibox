@@ -17,7 +17,7 @@ const Home = () => (
       <Title>
         Ooops!
       </Title>
-      <Text fontWeight="300" marginTop="40px" paddingX="5px">
+      <Text variant="thin" marginTop="huge" paddingX="small">
         Não encontramos a página que você estava procurando.
       </Text>
       <Image src={Image05} alt="Imagem de boas vindas" />

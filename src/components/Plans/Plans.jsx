@@ -19,21 +19,21 @@ const Plans = () => {
   }
 
   return (user && !user.unauthorized) ? (
-    <Container paddingX="11px" paddingY="40px">
+    <Container paddingX="normal" paddingY="huge">
       <Title>
         Bom te ver por aqui, @
         {user.name}
       </Title>
-      <Text marginTop="22px" fontWeight="300">
+      <Text marginTop="big" fontWeight="300">
         Você ainda não assinou um plano, que tal começar agora?
       </Text>
       <Card>
         <Image src={Image04} alt="Plano semanal" />
-        <Text variant="contrast" paddingX="20px" marginTop="21px">
+        <Text variant="contrast" paddingX="big" marginTop="big">
           Você recebe um box por semana. Ideal para quem quer exercer a gratidão todos os dias.
         </Text>
         <Link to="/assinar">
-          <Button marginTop="26px" fontSize="24px">
+          <Button marginTop="big" fontSize="24px">
             Assinar
           </Button>
         </Link>
@@ -42,14 +42,14 @@ const Plans = () => {
 
       <Card>
         <Image src={Image02} alt="Plano mensal" />
-        <Text variant="contrast" paddingX="20px" marginTop="21px">
+        <Text variant="contrast" paddingX="big" marginTop="big">
           Você recebe um box por mês.
         </Text>
-        <Text variant="contrast" paddingX="20px" marginTop="17px">
+        <Text variant="contrast" paddingX="big" marginTop="big">
           Ideal para quem está começando agora.
         </Text>
         <Link to="/assinar">
-          <Button marginTop="12px" fontSize="24px">
+          <Button marginTop="normal" fontSize="24px">
             Assinar
           </Button>
         </Link>

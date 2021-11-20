@@ -79,7 +79,7 @@ const SignUp = () => {
     <Container>
       <Form onSubmit={handleFormSubmit}>
         <Group>
-          <Title marginBottom="40px">
+          <Title marginBottom="huge">
             Bem vindo ao GratiBox
           </Title>
           <Input
@@ -123,7 +123,7 @@ const SignUp = () => {
           />
         </Group>
 
-        <Group marginTop="40px">
+        <Group marginTop="huge">
           <Button type="submit" size="large" isLoading={isLoading}>
             Cadastrar
           </Button>

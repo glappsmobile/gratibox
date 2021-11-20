@@ -71,7 +71,7 @@ const SignIn = () => {
       <Form onSubmit={handleFormSubmit}>
 
         <Group>
-          <Title marginBottom="40px">
+          <Title marginBottom="huge">
             Bem vindo ao GratiBox
           </Title>
           <Input
@@ -94,7 +94,7 @@ const SignIn = () => {
           />
         </Group>
 
-        <Group marginTop="40px">
+        <Group marginTop="huge">
           <Button
             size="large"
             type="submit"

@@ -10,14 +10,18 @@ import flexify from '../../styles/utils/flexify';
 
 const Home = () => (
   <Container
-    background="#5064ac"
+    background="primaryDark"
     flexProps={{ justifyContent: 'flex-top' }}
   >
     <BoxTop>
       <Title>
         Bem vindo ao GratiBox
       </Title>
-      <Text fontWeight="300" marginTop="40px" paddingX="5px">
+      <Text
+        fontWeight="300"
+        marginTop="huge"
+        paddingX="small"
+      >
         Receba em casa um box com chás, produtos organicos, incensos e muito mais...
       </Text>
       <Image src={Image05} alt="Imagem de boas vindas" />

@@ -6,7 +6,7 @@ import spacing from '../../styles/utils/spacing';
 
 const Select = styled.select`
   border-radius: 5px;
-  width: calc(100% - 40px);
+  width: 100%;
   margin-bottom: ${({ margin }) => spacing(margin)};
   height: 44px;
   border: none;
@@ -15,7 +15,7 @@ const Select = styled.select`
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: ${colorPicker('lighter')} url(${Arrow}) no-repeat ;
+  background: ${colorPicker('primaryLighter')} url(${Arrow}) no-repeat ;
   background-position: right;
 
   :focus {
@@ -25,7 +25,7 @@ const Select = styled.select`
   }
 
   option {
-    background: ${colorPicker('lighter')} ;
+    background: ${colorPicker('primaryLighter')} ;
   }
 `;
 

@@ -8,7 +8,7 @@ const colorPicker = (color) => {
       return '#8C97EA';
     case 'light':
       return '#e5cdb3';
-    case 'lighter':
+    case 'primaryLighter':
       return 'rgba(224, 209, 237, 0.62)';
     case 'pink':
       return '#e63c80';

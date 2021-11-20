@@ -17,8 +17,10 @@ const text = (color, weight, size) => css`
 
   font-size: ${() => {
     switch (size) {
-      case 'big':
+      case 'large':
         return '24px';
+      case 'huge':
+        return '36px';
       default:
         return '18px';
     }

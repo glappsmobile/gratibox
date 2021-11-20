@@ -4,7 +4,7 @@ const spacing = (space) => {
       return '5px';
     case 'normal':
       return '10px';
-    case 'big':
+    case 'large':
       return '20px';
     case 'huge':
       return '40px';

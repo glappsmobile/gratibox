@@ -4,6 +4,8 @@ const colorPicker = (color) => {
       return '#6d7ce4';
     case 'primaryDark':
       return '#4D65A8';
+    case 'primaryLight':
+      return '#8C97EA';
     case 'light':
       return '#e5cdb3';
     case 'lighter':

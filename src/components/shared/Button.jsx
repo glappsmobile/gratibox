@@ -4,9 +4,11 @@ import { Ellipsis } from 'react-spinners-css';
 import PropTypes from 'prop-types';
 import flexify from '../../styles/utils/flexify';
 import spacing from '../../styles/utils/spacing';
+import colorPicker from '../../styles/utils/colorPicker';
+import text from '../../styles/utils/text';
 
 const Button = ({
-  isLoading, variant, size, fontSize, marginTop, children,
+  isLoading, variant, size, fontSize, marginTop, margin, children,
 }) => (
   <StyledButton
     isLoading={isLoading}
@@ -15,6 +17,7 @@ const Button = ({
     disabled={isLoading}
     fontSize={fontSize}
     marginTop={marginTop}
+    margin={margin}
   >
     {isLoading ? (
       <Ellipsis color="white" />
@@ -34,6 +37,8 @@ Button.propTypes = {
   ]),
   fontSize: PropTypes.string,
   marginTop: PropTypes.string,
+  margin: PropTypes.string,
+
 };
 
 Button.defaultProps = {
@@ -42,15 +47,16 @@ Button.defaultProps = {
   size: '',
   fontSize: '18px',
   marginTop: '0',
+  margin: '0',
   children: '',
 };
 
 const StyledButton = styled.button`
   ${flexify()}
+  ${({ fontSize }) => text('white', 'bold', fontSize)}
   border-radius: 10px;
-  color: white;
-  font-weight: bold;
-  margin: 15px auto 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   opacity: ${({ isLoading }) => (isLoading ? '0.5' : '1')};
   cursor: ${({ isLoading }) => (isLoading ? 'not-allowed' : 'pointer')};
   :hover {
@@ -60,7 +66,7 @@ const StyledButton = styled.button`
     if (variant === 'text') {
       return 'none';
     }
-    return '#8C97EA';
+    return colorPicker('primaryLight');
   }};
   min-width: ${({ size }) => {
     if (size === 'large') {
@@ -74,14 +80,15 @@ const StyledButton = styled.button`
     }
     return '45px';
   }};
-  font-size: ${({ size }) => {
+  font-size: ${({ size, fontSize }) => {
     if (size === 'large') {
-      return '36px';
+      return text('white', 'bold', 'huge');
     }
-    return '18px';
+    return text('white', 'bold', fontSize);
   }};
-  font-size: ${({ fontSize }) => (fontSize || '18px')};
-  margin-top: ${({ marginTop }) => (spacing(marginTop) || '0')};
+
+  margin-bottom: ${({ margin }) => spacing(margin)};
+
 `;
 
 export default Button;

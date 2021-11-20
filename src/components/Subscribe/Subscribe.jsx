@@ -33,7 +33,7 @@ const Subscribe = () => {
         Bom te ver por aqui, @
         {user.name}
       </Title>
-      <Text marginTop="big" variant="thin">
+      <Text marginTop="large" variant="thin">
         “Agradecer é arte de atrair coisas boas”
       </Text>
       <Card>
@@ -69,7 +69,7 @@ const Subscribe = () => {
         </Group>
 
       </Card>
-      <Button marginTop="big" fontSize="24px">
+      <Button marginTop="large" fontSize="large">
         Próximo
       </Button>
     </Container>

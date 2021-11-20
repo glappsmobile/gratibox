@@ -11,6 +11,7 @@ const Container = styled.div`
   margin-top: ${({ marginTop }) => spacing(marginTop)};
   background: ${({ background }) => (background ? colorPicker(background) : colorPicker('primary'))};
   padding: ${({ paddingX, paddingY }) => `${spacing(paddingY)} ${spacing(paddingX)}`};
+
 `;
 
 export default Container;

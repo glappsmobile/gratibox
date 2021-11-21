@@ -6,12 +6,13 @@ import spacing from '../../styles/utils/spacing';
 
 const Select = styled.select`
   border-radius: 5px;
-  width: 100%;
-  margin-bottom: ${({ margin }) => spacing(margin)};
+  width: ${({ width }) => (width || '100%')};
   height: 44px;
   border: none;
-  padding-left: ${spacing('normal')};
   ${text('primaryDark', 'bold')}
+  padding-left: ${spacing('normal')};
+  margin-bottom: ${({ margin }) => spacing(margin)};
+  margin-left: ${({ marginLeft }) => spacing(marginLeft)};
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;

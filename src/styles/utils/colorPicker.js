@@ -12,6 +12,10 @@ const colorPicker = (color) => {
       return 'rgba(224, 209, 237, 0.62)';
     case 'pink':
       return '#e63c80';
+    case 'danger':
+      return '#df4759';
+    case 'gray':
+      return '#604848';
     case 'white':
       return '#ffffff';
     default:

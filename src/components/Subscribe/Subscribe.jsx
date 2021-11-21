@@ -25,6 +25,10 @@ const Subscribe = () => {
     plan: '',
     deliveryDay: '',
     name: '',
+    address: '',
+    cep: '',
+    city: '',
+    state: '',
   });
 
   const handleCheckboxChange = (prop) => () => {
@@ -53,6 +57,7 @@ const Subscribe = () => {
         “Agradecer é arte de atrair coisas boas”
       </Text>
       <Carousel
+        showArrows={false}
         swipeable={false}
         showStatus={false}
         showIndicators={false}

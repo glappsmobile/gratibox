@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import flexify from '../../styles/utils/flexify';
 import EyeIcon from './EyeIcon';
+import flexify from '../../styles/utils/flexify';
 import colorPicker from '../../styles/utils/colorPicker';
+import sizing from '../../styles/utils/sizing';
+import text from '../../styles/utils/text';
 
 const Input = ({
   placeholder, minLength, type, onChange, value, required,
@@ -79,44 +81,53 @@ const HelperText = styled.span`
 
 const InputWrapper = styled.div`
   position: relative;
+  width: 100%;
 `;
 
 const InputGroup = styled.div`
   ${flexify({ alignItems: 'flex-start' })}
   margin-bottom: 8px;
+  width: 100%;
 `;
 
 const StyledInput = styled.input`
-  width: ${({ fullWidth }) => (fullWidth ? '100%' : '90vw')};
-  border: ${({ error }) => (error ? '1px solid #df4759' : 'none')};
-  color: ${({ error }) => (error ? '#df4759' : 'black')};
-  background: ${({ background = 'white' }) => colorPicker(background)};
   max-width: 500px;
-  min-height: 64px;
+  width: ${({ fullWidth }) => (fullWidth ? '100%' : '90vw')};
+  border: ${({ error }) => (error ? `1px solid ${colorPicker('danger')}` : 'none')};
+  color: ${({ error }) => (error ? colorPicker('danger') : 'black')};
+  background: ${({ background = 'white' }) => colorPicker(background)};
+  min-height:${({ size = 'normal' }) => sizing(size)};
   padding-left: 15px;
   border-radius: 10px;
   font-size: 24px;
   font-weight: 500;
 
+  ${({ variant }) => {
+    if (variant === 'strong') {
+      return text('primaryDark', 'bold', '18px');
+    }
+    return '';
+  }}
+
   :focus {
-    outline: none !important;
+    outline: none;
     border: 2px solid ${colorPicker('primaryDark')};
     box-shadow: 0 0 10px ${colorPicker('primaryDark')};
   }
 
   ::placeholder {
-    color: #604848;
-    opacity: 0.5; 
+    color:  ${({ variant }) => ((variant === 'strong') ? colorPicker('primaryDark') : colorPicker('gray'))};
+    opacity: ${({ variant }) => ((variant === 'strong') ? '1' : '0.5')};
   }
 
-  :-ms-input-placeholder { 
-    color: #604848;
-    opacity: 0.5;
+  :-ms-input-placeholder {
+    color:  ${({ variant }) => ((variant === 'strong') ? colorPicker('primaryDark') : colorPicker('gray'))};
+    opacity: ${({ variant }) => ((variant === 'strong') ? '1' : '0.5')};
   }
 
-  ::-ms-input-placeholder { 
-    color: #604848;
-    opacity: 0.5;
+  ::-ms-input-placeholder {
+    color:  ${({ variant }) => ((variant === 'strong') ? colorPicker('primaryDark') : colorPicker('gray'))};
+    opacity: ${({ variant }) => ((variant === 'strong') ? '1' : '0.5')};
   }
 `;
 

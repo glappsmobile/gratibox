@@ -7,10 +7,11 @@ import Title from '../shared/Title';
 import Button from '../shared/Button';
 import Container from '../shared/Container';
 import flexify from '../../styles/utils/flexify';
+import colorPicker from '../../styles/utils/colorPicker';
 
 const Home = () => (
   <Container
-    background="#5064ac"
+    background="primaryDark"
     flexProps={{ justifyContent: 'flex-top' }}
   >
     <BoxTop>
@@ -36,7 +37,7 @@ const BoxTop = styled.div`
   ${flexify()}
   padding-top: 50px;
   text-align: center;
-  background-color: #6d7ce4;
+  background-color: ${colorPicker('primary')};
   width: 79vh;
   max-width: 100vw;
 `;

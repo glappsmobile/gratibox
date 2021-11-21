@@ -7,7 +7,6 @@ const Container = styled.div`
   ${({ flexProps }) => (flexProps ? flexify(flexProps) : flexify())}
   width: fit-content;
   min-height: 100vh;
-  height: 100vh;
   margin: auto;
   margin-top: ${({ marginTop = 'auto' }) => spacing(marginTop)};
   background: ${({ background }) => (background ? colorPicker(background) : colorPicker('primary'))};

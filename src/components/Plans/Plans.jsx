@@ -72,9 +72,7 @@ const Plans = () => {
 };
 
 const Card = styled.div`
-  ${flexify({
-    justifyContent: 'space-around',
-  })}
+  ${flexify({ justifyContent: 'space-around' })}
   width: 100%;
   max-width: 400px;
   min-width: 250px;

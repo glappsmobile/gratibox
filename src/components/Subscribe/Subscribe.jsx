@@ -1,20 +1,14 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Container from '../shared/Container';
 import Title from '../shared/Title';
 import Text from '../shared/Text';
-import Button from '../shared/Button';
-import Select from '../shared/Select';
-import Group from '../shared/Group';
-import Checkbox from '../shared/Checkbox';
 import LoadingPage from '../shared/LoadingPage';
-import Image03 from '../../assets/images/image03.png';
 import UserContext from '../../contexts/UserContext';
-import flexify from '../../styles/utils/flexify';
-import colorPicker from '../../styles/utils/colorPicker';
-import text from '../../styles/utils/text';
-import spacing from '../../styles/utils/spacing';
+import PlanInfo from './PlanInfo';
+import UserInfo from './UserInfo';
 
 const Subscribe = () => {
   const { user } = useContext(UserContext);
@@ -22,15 +16,23 @@ const Subscribe = () => {
 
   const [plan, setPlan] = useState('');
   const [deliveryDay, setDeliveryDay] = useState('');
+  const [currentPage, setCurrentPage] = useState(0);
 
-  const [checkboxes, setCheckboxes] = useState({
+  const [formData, setFormData] = useState({
     tea: false,
     insenses: false,
     organics: false,
+    plan: '',
+    deliveryDay: '',
+    name: '',
   });
 
-  const handleChange = (prop) => () => {
-    setCheckboxes((values) => ({ ...values, [prop]: !values[prop] }));
+  const handleCheckboxChange = (prop) => () => {
+    setFormData((values) => ({ ...values, [prop]: !values[prop] }));
+  };
+
+  const handleInputChange = (prop) => (e) => {
+    setFormData({ ...formData, [prop]: e.target.value });
   };
 
   useEffect(() => {
@@ -42,7 +44,7 @@ const Subscribe = () => {
   }
 
   return (user && !user.unauthorized) ? (
-    <Container paddingX="normal">
+    <Container>
       <Title>
         Bom te ver por aqui, @
         {user.name}
@@ -50,106 +52,40 @@ const Subscribe = () => {
       <Text marginTop="large" variant="thin">
         “Agradecer é arte de atrair coisas boas”
       </Text>
-      <Card>
-        <Image src={Image03} alt="Plano semanal" />
-        <Group paddingX="normal">
-          <Select
-            value={plan}
-            onChange={(e) => setPlan(e.target.value)}
-            margin="small"
-          >
-            <option value=""> Plano </option>
-            <option value="1"> Semanal </option>
-            <option value="2"> Mensal </option>
-          </Select>
+      <Carousel
+        swipeable={false}
+        showStatus={false}
+        showIndicators={false}
+        showThumbs={false}
+        selectedItem={currentPage}
+      >
+        <PlanInfo
+          plan={plan}
+          setPlan={setPlan}
+          deliveryDay={deliveryDay}
+          setDeliveryDay={setDeliveryDay}
+          formData={formData}
+          setCurrentPage={setCurrentPage}
+          handleCheckboxChange={handleCheckboxChange}
+          handleInputChange={handleInputChange}
+        />
 
-          <Select value={deliveryDay} onChange={(e) => setDeliveryDay(e.target.value)}>
-            <option value=""> Entrega </option>
-            {(plan === '1') && (
-              <>
-                <option value="1"> Segunda </option>
-                <option value="2"> Quarta </option>
-                <option value="3"> Sexta </option>
-              </>
-            )}
-            {(plan === '2') && (
-              <>
-                <option value="1"> Dia 01 </option>
-                <option value="2"> Dia 10 </option>
-                <option value="3"> Dia 20 </option>
-              </>
-            )}
-          </Select>
-          <Box>
-            <span>Quero receber</span>
-            <ContainerCheckboxes>
-              <Checkbox
-                isChecked={checkboxes.tea}
-                onChange={handleChange('tea')}
-              >
-                Chás
-              </Checkbox>
+        <UserInfo
+          plan={plan}
+          setPlan={setPlan}
+          deliveryDay={deliveryDay}
+          setDeliveryDay={setDeliveryDay}
+          formData={formData}
+          setCurrentPage={setCurrentPage}
+          handleCheckboxChange={handleCheckboxChange}
+          handleInputChange={handleInputChange}
+        />
 
-              <Checkbox
-                isChecked={checkboxes.insenses}
-                onChange={handleChange('insenses')}
-              >
-                Insensos
-              </Checkbox>
-
-              <Checkbox
-                isChecked={checkboxes.organics}
-                onChange={handleChange('organics')}
-              >
-                Produtos organicos
-              </Checkbox>
-            </ContainerCheckboxes>
-          </Box>
-        </Group>
-      </Card>
-      <Button marginTop="large" fontSize="large">
-        Próximo
-      </Button>
+      </Carousel>
     </Container>
   ) : (
     <LoadingPage />
   );
 };
-
-const ContainerCheckboxes = styled(Group)`
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  height: 100%;
-  padding-bottom: ${spacing('large')}
-
-`;
-
-const Card = styled.div`
-  ${flexify({ justifyContent: 'space-between' })}
-  width: 100%;
-  max-width: 470px;
-  height: 400px;
-  background-color: #fff;
-  border-radius: 25px;
-  margin-top: 30px;
-`;
-
-const Image = styled.img`
-  height: 172px;
-  max-width: 100%;
-  object-fit: fill;
-`;
-
-const Box = styled.div`
-  background: ${colorPicker('primaryLighter')};
-  ${text('primaryDark', 'bold')};
-  margin-top: ${spacing('small')};
-  margin-bottom: ${spacing('normal')};
-  padding: ${`${spacing('small')} ${spacing('normal')}`};
-  border-radius: 5px;
-  height: 110px;
-  width: 100%;
-`;
 
 export default Subscribe;

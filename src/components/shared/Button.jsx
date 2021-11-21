@@ -8,7 +8,7 @@ import colorPicker from '../../styles/utils/colorPicker';
 import text from '../../styles/utils/text';
 
 const Button = ({
-  isLoading, variant, size, fontSize, marginTop, margin, children,
+  isLoading, variant, size, fontSize, marginTop, margin, onClick, children,
 }) => (
   <StyledButton
     isLoading={isLoading}
@@ -18,6 +18,7 @@ const Button = ({
     fontSize={fontSize}
     marginTop={marginTop}
     margin={margin}
+    onClick={onClick}
   >
     {isLoading ? (
       <Ellipsis color="white" />
@@ -28,6 +29,7 @@ const Button = ({
 );
 
 Button.propTypes = {
+  onClick: PropTypes.func,
   isLoading: PropTypes.bool,
   variant: PropTypes.string,
   size: PropTypes.string,
@@ -48,6 +50,7 @@ Button.defaultProps = {
   fontSize: '18px',
   marginTop: '0',
   margin: '0',
+  onClick: () => { },
   children: '',
 };
 

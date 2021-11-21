@@ -9,10 +9,9 @@ import colorPicker from '../../styles/utils/colorPicker';
 const Checkbox = ({
   isChecked, onChange, children,
 }) => (
-  <CheckBoxWrapper>
+  <CheckBoxWrapper onClick={onChange}>
     <CheckboxButton
       isChecked={isChecked}
-      onClick={onChange}
     >
       <CheckIcon />
     </CheckboxButton>
@@ -42,7 +41,6 @@ const CheckboxButton = styled.div`
   border: none;
   width: 20px;
   height: 20px;
-  cursor: pointer;
   margin-right: ${spacing('small')};
   transition: 250ms;
 `;
@@ -55,6 +53,7 @@ const CheckIcon = styled(BsCheckLg)`
 
 const CheckBoxWrapper = styled.div`
   display: flex;
+  cursor: pointer;
   & {
     span {
       margin-top: 2px;

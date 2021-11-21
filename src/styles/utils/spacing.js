@@ -8,6 +8,8 @@ const spacing = (space) => {
       return '20px';
     case 'huge':
       return '40px';
+    case 'auto':
+      return 'auto';
     default:
       return '0px';
   }

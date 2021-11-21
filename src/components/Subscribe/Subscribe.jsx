@@ -48,12 +48,12 @@ const Subscribe = () => {
   }
 
   return (user && !user.unauthorized) ? (
-    <Container>
-      <Title>
+    <Container marginTop="normal">
+      <Title marginX="small">
         Bom te ver por aqui, @
         {user.name}
       </Title>
-      <Text marginTop="large" variant="thin">
+      <Text marginTop="large" variant="thin" marginX="small">
         “Agradecer é arte de atrair coisas boas”
       </Text>
       <Carousel

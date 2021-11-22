@@ -21,6 +21,10 @@ const Plans = () => {
     navigate('/');
   }
 
+  if (user && user.subscription.plan) {
+    navigate('/detalhes');
+  }
+
   return (user && !user.unauthorized) ? (
     <Container paddingX="normal" paddingY="huge">
       <Title>

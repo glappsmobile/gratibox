@@ -39,7 +39,12 @@ const SignIn = () => {
         getUser(token)
           .then((responseUser) => {
             setUser({ ...responseUser.data, token, unauthorized: false });
-            navigate('/planos');
+
+            if (responseUser.data.subscription.plan) {
+              navigate('/detalhes');
+            } else {
+              navigate('/planos');
+            }
             setIsLoading(false);
           });
       })

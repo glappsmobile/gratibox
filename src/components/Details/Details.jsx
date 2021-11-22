@@ -18,7 +18,10 @@ const Details = () => {
   if (user && user.unauthorized) {
     navigate('/');
   }
-  console.log(user);
+
+  if (user && !user.subscription.plan) {
+    navigate('/planos');
+  }
 
   return (user && !user.unauthorized) ? (
     <Container paddingX="normal" paddingY="huge">
@@ -74,6 +77,7 @@ const Details = () => {
         <Button
           fontSize="large"
           marginTop="large"
+          size="large"
         >
           Avaliar entregas
         </Button>

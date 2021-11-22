@@ -19,6 +19,10 @@ const Subscribe = () => {
   const [deliveryDay, setDeliveryDay] = useState('');
   const [currentPage, setCurrentPage] = useState(0);
 
+  if (user && user.subscription.plan) {
+    navigate('/detalhes');
+  }
+
   const [formData, setFormData] = useState({
     tea: false,
     incense: false,

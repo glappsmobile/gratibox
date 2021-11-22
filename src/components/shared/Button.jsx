@@ -83,9 +83,9 @@ const StyledButton = styled.button`
     }
     return '45px';
   }};
-  font-size: ${({ size, fontSize }) => {
+  font-size: ${({ size, fontSize = 'huge' }) => {
     if (size === 'large') {
-      return text('white', 'bold', 'huge');
+      return text('white', 'bold', fontSize);
     }
     return text('white', 'bold', fontSize);
   }};

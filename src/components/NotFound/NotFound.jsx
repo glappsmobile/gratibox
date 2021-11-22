@@ -7,17 +7,19 @@ import Title from '../shared/Title';
 import Button from '../shared/Button';
 import Container from '../shared/Container';
 import flexify from '../../styles/utils/flexify';
+import colorPicker from '../../styles/utils/colorPicker';
 
 const Home = () => (
   <Container
-    background="#5064ac"
+    background="primaryDark"
     flexProps={{ justifyContent: 'flex-top' }}
+    fitContent
   >
     <BoxTop>
       <Title>
         Ooops!
       </Title>
-      <Text fontWeight="300" marginTop="40px" paddingX="5px">
+      <Text variant="thin" marginTop="huge" paddingX="small">
         Não encontramos a página que você estava procurando.
       </Text>
       <Image src={Image05} alt="Imagem de boas vindas" />
@@ -36,7 +38,7 @@ const BoxTop = styled.div`
   ${flexify()}
   padding-top: 50px;
   text-align: center;
-  background-color: #6d7ce4;
+  background-color: ${colorPicker('primary')};
   width: 79vh;
   max-width: 100vw;
 `;

@@ -1,19 +1,25 @@
 import styled from 'styled-components';
+import spacing from '../../styles/utils/spacing';
+import text from '../../styles/utils/text';
 
 const Text = styled.span`
-  font-weight: ${({ fontWeight }) => fontWeight || 400};
-  margin-top: ${({ marginTop }) => marginTop || 0};
-  padding: ${({ paddingX, paddingY }) => `${(paddingY || 0)} ${(paddingX || 0)}`};
+  margin-top: ${({ marginTop }) => spacing(marginTop)};
+  padding: ${({ paddingX, paddingY }) => `${spacing(paddingY)} ${spacing(paddingX)}`};
   font-size: 18px;
   line-height: 21px;
 
   display: inline-block;
-  ${({ variant }) => {
+  ${({ variant, weight }) => {
     if (variant === 'contrast') {
-      return `
-        color: #4D65A8;
-        font-weight: 700;
-      `;
+      return text('primaryDark', 'bold');
+    }
+
+    if (variant === 'thin') {
+      return text('white', 'thin');
+    }
+
+    if (variant === 'pink') {
+      return text('pink', weight || 'normal');
     }
     return '';
   }}

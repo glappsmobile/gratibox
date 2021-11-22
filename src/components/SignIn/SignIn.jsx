@@ -7,8 +7,9 @@ import Title from '../shared/Title';
 import Button from '../shared/Button';
 import Input from '../shared/Input';
 import Form from '../shared/Form';
-import { signIn } from '../../services/gratibox.services';
+import { signIn, getUser } from '../../services/gratibox.services';
 import UserContext from '../../contexts/UserContext';
+import colorPicker from '../../styles/utils/colorPicker';
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -33,15 +34,22 @@ const SignIn = () => {
     setIsLoading(true);
     signIn(formData)
       .then((response) => {
-        setIsLoading(false);
-        localStorage.setItem('token', JSON.stringify(response.data.token));
-        setUser({ ...response.data });
-        navigate('/planos');
+        const { token } = response.data;
+        localStorage.setItem('token', JSON.stringify(token));
+        getUser(token)
+          .then((responseUser) => {
+            setUser({ ...responseUser.data, token, unauthorized: false });
+
+            if (responseUser.data.subscription.plan) {
+              navigate('/detalhes');
+            } else {
+              navigate('/planos');
+            }
+            setIsLoading(false);
+          });
       })
       .catch((error) => {
         const { status } = error.response;
-        setIsLoading(false);
-
         if (status === 404) {
           setErrors({
             email: 'E-mail não cadastrado',
@@ -55,14 +63,17 @@ const SignIn = () => {
             icon: 'error',
             title: 'Oops...',
             text: 'Dados preenchidos incorretamente',
+            confirmButtonColor: colorPicker('primary'),
           });
         } else {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
             text: 'Ocorreu um erro ao entrar no GratiBox, tente novamente mais tarde',
+            confirmButtonColor: colorPicker('primary'),
           });
         }
+        setIsLoading(false);
       });
   };
 
@@ -71,7 +82,7 @@ const SignIn = () => {
       <Form onSubmit={handleFormSubmit}>
 
         <Group>
-          <Title marginBottom="40px">
+          <Title marginBottom="huge">
             Bem vindo ao GratiBox
           </Title>
           <Input
@@ -94,7 +105,7 @@ const SignIn = () => {
           />
         </Group>
 
-        <Group marginTop="40px">
+        <Group marginTop="huge">
           <Button
             size="large"
             type="submit"

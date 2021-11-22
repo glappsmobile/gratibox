@@ -16,6 +16,7 @@ import flexify from '../../styles/utils/flexify';
 const Plans = () => {
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
+  console.log(user);
 
   if (user && user.unauthorized) {
     navigate('/');

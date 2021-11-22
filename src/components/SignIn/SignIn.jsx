@@ -7,7 +7,7 @@ import Title from '../shared/Title';
 import Button from '../shared/Button';
 import Input from '../shared/Input';
 import Form from '../shared/Form';
-import { signIn } from '../../services/gratibox.services';
+import { signIn, getUser } from '../../services/gratibox.services';
 import UserContext from '../../contexts/UserContext';
 
 const SignIn = () => {
@@ -33,15 +33,17 @@ const SignIn = () => {
     setIsLoading(true);
     signIn(formData)
       .then((response) => {
-        setIsLoading(false);
-        localStorage.setItem('token', JSON.stringify(response.data.token));
-        setUser({ ...response.data });
-        navigate('/planos');
+        const { token } = response.data;
+        localStorage.setItem('token', JSON.stringify(token));
+        getUser(token)
+          .then((responseUser) => {
+            setUser({ ...responseUser.data, token, unauthorized: false });
+            navigate('/planos');
+            setIsLoading(false);
+          });
       })
       .catch((error) => {
         const { status } = error.response;
-        setIsLoading(false);
-
         if (status === 404) {
           setErrors({
             email: 'E-mail não cadastrado',
@@ -63,6 +65,7 @@ const SignIn = () => {
             text: 'Ocorreu um erro ao entrar no GratiBox, tente novamente mais tarde',
           });
         }
+        setIsLoading(false);
       });
   };
 

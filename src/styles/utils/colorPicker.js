@@ -16,6 +16,8 @@ const colorPicker = (color) => {
       return '#df4759';
     case 'gray':
       return '#604848';
+    case 'black':
+      return '#000000';
     case 'white':
       return '#ffffff';
     default:

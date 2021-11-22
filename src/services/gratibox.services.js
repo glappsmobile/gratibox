@@ -14,4 +14,8 @@ const signUp = (body) => axios.post(`${URL_API}/sign-up`, body);
 
 const getUser = (token) => axios.get(`${URL_API}/user`, getConfig(token));
 
-export { signUp, signIn, getUser };
+const subscribe = (body, token) => axios.post(`${URL_API}/subscribe`, body, getConfig(token));
+
+export {
+  signUp, signIn, getUser, subscribe,
+};

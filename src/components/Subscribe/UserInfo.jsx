@@ -1,5 +1,4 @@
-/* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Button from '../shared/Button';
@@ -7,16 +6,27 @@ import Select from '../shared/Select';
 import Input from '../shared/Input';
 import Group from '../shared/Group';
 import Card from '../shared/Card';
+import Form from '../shared/Form';
 import Image03 from '../../assets/images/image03.png';
+import { subscribe } from '../../services/gratibox.services';
+import UserContext from '../../contexts/UserContext';
 
 const UserInfo = ({
   formData, handleInputChange, setCurrentPage,
 }) => {
-  const finishOrder = () => {
-    console.log(formData);
+  const { user } = useContext(UserContext);
+  const finishOrder = (e) => {
+    e.preventDefault();
+    subscribe(formData, user.token)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
   };
   return (
-    <div>
+    <Form onSubmit={finishOrder}>
       <Card background="white">
         <Image src={Image03} alt="Plano semanal" />
         <Group paddingX="normal">
@@ -28,6 +38,7 @@ const UserInfo = ({
             size="small"
             variant="strong"
             fullWidth
+            required
           />
 
           <Input
@@ -38,6 +49,7 @@ const UserInfo = ({
             size="small"
             variant="strong"
             fullWidth
+            required
           />
 
           <Input
@@ -48,6 +60,7 @@ const UserInfo = ({
             size="small"
             variant="strong"
             fullWidth
+            required
           />
           <Group flexProps={{ row: true }}>
             <Input
@@ -58,6 +71,7 @@ const UserInfo = ({
               size="small"
               variant="strong"
               fullWidth
+              required
             />
 
             <Select
@@ -66,8 +80,9 @@ const UserInfo = ({
               width="150px"
               marginLeft="normal"
               margin="small"
+              required
             >
-              <option>Estado</option>
+              <option value=""> Estado </option>
               <option value={1}>AC</option>
               <option value={2}>AL</option>
               <option value={3}>AM</option>
@@ -102,7 +117,7 @@ const UserInfo = ({
       <Button
         marginTop="large"
         fontSize="large"
-        onClick={finishOrder}
+        type="submit"
       >
         Finalizar
       </Button>
@@ -115,7 +130,7 @@ const UserInfo = ({
       >
         Anterior
       </Button>
-    </div>
+    </Form>
   );
 };
 

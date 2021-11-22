@@ -94,13 +94,13 @@ const StyledInput = styled.input`
   max-width: 500px;
   width: ${({ fullWidth }) => (fullWidth ? '100%' : '90vw')};
   border: ${({ error }) => (error ? `1px solid ${colorPicker('danger')}` : 'none')};
-  color: ${({ error }) => (error ? colorPicker('danger') : 'black')};
+  color: ${({ error, color = 'black' }) => (error ? colorPicker('danger') : colorPicker(color))};
   background: ${({ background = 'white' }) => colorPicker(background)};
   min-height:${({ size = 'normal' }) => sizing(size)};
   padding-left: 15px;
   border-radius: 10px;
   font-size: 24px;
-  font-weight: 500;
+  font-weight: 400;
 
   ${({ variant }) => {
     if (variant === 'strong') {

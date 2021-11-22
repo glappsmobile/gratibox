@@ -20,8 +20,8 @@ const Subscribe = () => {
 
   const [formData, setFormData] = useState({
     tea: false,
-    insenses: false,
-    organics: false,
+    incense: false,
+    organic: false,
     plan: '',
     deliveryDay: '',
     name: '',

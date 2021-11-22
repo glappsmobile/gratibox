@@ -36,7 +36,7 @@ const PlanInfo = ({
   };
   return (
     <Form onSubmit={next}>
-      <Card background="white">
+      <Card background="white" marginX="normal">
         <Image src={Image03} alt="Plano semanal" />
         <Group paddingX="normal">
           <Select
@@ -58,16 +58,16 @@ const PlanInfo = ({
             <option value=""> Entrega </option>
             {(formData.plan === '1') && (
               <>
-                <option value="1"> Segunda </option>
-                <option value="2"> Quarta </option>
-                <option value="3"> Sexta </option>
+                <option value="monday"> Segunda </option>
+                <option value="wednesday"> Quarta </option>
+                <option value="friday"> Sexta </option>
               </>
             )}
             {(formData.plan === '2') && (
               <>
                 <option value="1"> Dia 01 </option>
-                <option value="2"> Dia 10 </option>
-                <option value="3"> Dia 20 </option>
+                <option value="10"> Dia 10 </option>
+                <option value="20"> Dia 20 </option>
               </>
             )}
           </Select>

@@ -12,7 +12,7 @@ const Card = styled.div`
   border-radius: 25px;
   margin-right: auto;
   margin-left: auto;
-  width: ${({ marginX = 'normal' }) => `calc(100% - ${spacing(marginX)} - ${spacing(marginX)})`};
+  width: ${({ marginX = '0' }) => `calc(100% - ${spacing(marginX)} - ${spacing(marginX)})`};
   height: 400px;
   max-width: 400px;
 `;

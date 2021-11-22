@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import styled from 'styled-components';
 import Container from '../shared/Container';
 import Title from '../shared/Title';
 import Text from '../shared/Text';
@@ -48,15 +49,17 @@ const Subscribe = () => {
   }
 
   return (user && !user.unauthorized) ? (
-    <Container marginTop="normal">
+    <Container>
       <Title marginX="small">
-        Bom te ver por aqui, @
+        Bom te ver por aqui,
+        {' '}
         {user.name}
+        .
       </Title>
       <Text marginTop="large" variant="thin" marginX="small">
         “Agradecer é arte de atrair coisas boas”
       </Text>
-      <Carousel
+      <StyledCarousel
         showArrows={false}
         swipeable={false}
         showStatus={false}
@@ -86,11 +89,15 @@ const Subscribe = () => {
           handleInputChange={handleInputChange}
         />
 
-      </Carousel>
+      </StyledCarousel>
     </Container>
   ) : (
     <LoadingPage />
   );
 };
+
+const StyledCarousel = styled(Carousel)`
+  max-width: 100vw;
+`;
 
 export default Subscribe;

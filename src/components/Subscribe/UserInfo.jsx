@@ -50,7 +50,7 @@ const UserInfo = ({
   };
   return (
     <Form onSubmit={finishOrder}>
-      <Card background="white">
+      <Card background="white" marginX="normal">
         <Image src={Image03} alt="Plano semanal" />
         <Group paddingX="normal">
           <Input

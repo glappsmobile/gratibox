@@ -24,8 +24,10 @@ const Plans = () => {
   return (user && !user.unauthorized) ? (
     <Container paddingX="normal" paddingY="huge">
       <Title>
-        Bom te ver por aqui, @
+        Bom te ver por aqui,
+        {' '}
         {user.name}
+        .
       </Title>
       <Text marginTop="large" variant="thin">
         Você ainda não assinou um plano, que tal começar agora?

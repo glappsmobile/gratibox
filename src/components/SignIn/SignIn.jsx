@@ -109,6 +109,7 @@ const SignIn = () => {
           <Button
             size="large"
             type="submit"
+            fontSize="28px"
             isLoading={isLoading}
           >
             Entrar

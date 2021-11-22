@@ -5,7 +5,7 @@ import colorPicker from '../../styles/utils/colorPicker';
 
 const Container = styled.div`
   ${({ flexProps }) => (flexProps ? flexify(flexProps) : flexify())}
-  width: 100%;
+  width:  ${({ fitContent }) => (fitContent ? 'fit-content' : '100%')};
   min-height: 100vh;
   margin: auto;
   margin-top: ${({ marginTop = 'auto' }) => spacing(marginTop)};

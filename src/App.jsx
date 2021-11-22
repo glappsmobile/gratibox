@@ -13,12 +13,15 @@ import { getUser } from './services/gratibox.services';
 
 const App = () => {
   const [user, setUser] = useState();
+
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem('token'));
     if (token) {
       getUser(token)
         .then((response) => {
-          setUser({ ...response.data, token, unauthorized: false });
+          setUser({
+            ...response.data, token, unauthorized: false,
+          });
         })
         .catch(() => {
           localStorage.removeItem('token');

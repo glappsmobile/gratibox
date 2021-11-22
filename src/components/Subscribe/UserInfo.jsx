@@ -10,7 +10,7 @@ import Group from '../shared/Group';
 import Card from '../shared/Card';
 import Form from '../shared/Form';
 import Image03 from '../../assets/images/image03.png';
-import { subscribe } from '../../services/gratibox.services';
+import { subscribe, getUser } from '../../services/gratibox.services';
 import UserContext from '../../contexts/UserContext';
 import colorPicker from '../../styles/utils/colorPicker';
 
@@ -18,24 +18,37 @@ const UserInfo = ({
   formData, handleInputChange, setCurrentPage,
 }) => {
   const navigate = useNavigate();
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(false);
   const cepMask = (text) => text.replace(/\D/g, '').replace(/(\d{5})(\d{1,3})/, '$1-$2').substring(0, 9);
-
   const finishOrder = (e) => {
     e.preventDefault();
     setIsLoading(true);
     subscribe(formData, user.token)
       .then(() => {
-        Swal.fire({
-          title: 'Sucesso',
-          text: 'Assinatura realizada com sucesso!',
-          icon: 'success',
-          confirmButtonColor: colorPicker('primary'),
-          confirmButtonText: 'Ver detalhes',
-        }).then(() => {
-          navigate('/detalhes');
-        });
+        getUser(user.token)
+          .then((response) => {
+            setUser({
+              ...response.data, token: user.token, unauthorized: false,
+            });
+            Swal.fire({
+              title: 'Sucesso',
+              text: 'Assinatura realizada com sucesso!',
+              icon: 'success',
+              confirmButtonColor: colorPicker('primary'),
+              confirmButtonText: 'Ver detalhes',
+            }).then(() => {
+              navigate('/detalhes');
+            });
+          })
+          .catch(() => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Ocorreu um erro ao realizar sua assinatura',
+              confirmButtonColor: colorPicker('primary'),
+            });
+          });
         setIsLoading(false);
       })
       .catch(() => {

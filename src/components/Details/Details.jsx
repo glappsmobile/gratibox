@@ -38,34 +38,42 @@ const Details = () => {
             <Text variant="contrast" marginTop="large">
               Plano:
               {' '}
-              <Text variant="pink" weight="bold">{user.plan}</Text>
+              <Text variant="pink" weight="bold">{user.subscription.plan}</Text>
             </Text>
 
             <Text variant="contrast" marginTop="small">
               Data da assinatura:
               {' '}
-              <Text variant="pink" weight="bold">{user.subscriptionDate}</Text>
+              <Text variant="pink" weight="bold">{user.subscription.subscriptionDate}</Text>
             </Text>
 
             <Text variant="contrast" marginTop="small">
               Próximas entregas:
             </Text>
-            <Text variant="pink" weight="bold" paddingX="large">{user.nextDeliveries[0]}</Text>
-            <Text variant="pink" weight="bold" paddingX="large">{user.nextDeliveries[1]}</Text>
-            <Text variant="pink" weight="bold" paddingX="large">{user.nextDeliveries[2]}</Text>
+            <Text variant="pink" weight="bold" paddingX="large">{user.subscription.nextDeliveries[0]}</Text>
+            <Text variant="pink" weight="bold" paddingX="large">{user.subscription.nextDeliveries[1]}</Text>
+            <Text variant="pink" weight="bold" paddingX="large">{user.subscription.nextDeliveries[2]}</Text>
           </Group>
         </Group>
         <Group flexProps={{ row: true }} marginBottom="large">
-          <Text variant="pink" paddingX="large">Chás</Text>
-          <Text variant="pink">Produtos organicos</Text>
-          <Text variant="pink" paddingX="large">Incensos</Text>
+          {user.subscription.tea && (
+            <Text variant="pink" paddingX="large">Chás</Text>
+          )}
+          {user.subscription.organic && (
+            <Text variant="pink">Produtos organicos</Text>
+          )}
+
+          {user.subscription.incense && (
+            <Text variant="pink" paddingX="large">Incensos</Text>
+          )}
+
         </Group>
 
       </Card>
-      <Link to="/assinar">
+      <Link to="/avaliar">
         <Button
           fontSize="large"
-          marginBottom="large"
+          marginTop="large"
         >
           Avaliar entregas
         </Button>

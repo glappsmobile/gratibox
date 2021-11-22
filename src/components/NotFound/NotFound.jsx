@@ -13,6 +13,7 @@ const Home = () => (
   <Container
     background="primaryDark"
     flexProps={{ justifyContent: 'flex-top' }}
+    fitContent
   >
     <BoxTop>
       <Title>

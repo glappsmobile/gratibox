@@ -1,11 +1,10 @@
 import React, { useContext } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Container from '../shared/Container';
 import Title from '../shared/Title';
 import Text from '../shared/Text';
 import Group from '../shared/Group';
-import Button from '../shared/Button';
 import LoadingPage from '../shared/LoadingPage';
 import Image03 from '../../assets/images/image03.png';
 import UserContext from '../../contexts/UserContext';
@@ -73,15 +72,7 @@ const Details = () => {
         </Group>
 
       </Card>
-      <Link to="/avaliar">
-        <Button
-          fontSize="large"
-          marginTop="large"
-          size="large"
-        >
-          Avaliar entregas
-        </Button>
-      </Link>
+
     </Container>
   ) : (
     <LoadingPage />

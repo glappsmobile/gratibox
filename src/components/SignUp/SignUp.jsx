@@ -8,6 +8,7 @@ import Button from '../shared/Button';
 import Input from '../shared/Input';
 import Form from '../shared/Form';
 import { signUp } from '../../services/gratibox.services';
+import colorPicker from '../../styles/utils/colorPicker';
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -51,8 +52,7 @@ const SignUp = () => {
           title: 'Sucesso',
           text: 'Cadastro realizado!',
           icon: 'success',
-          confirmButtonColor: '#6d7ce4',
-          confirmButtonText: 'Entrar',
+          confirmButtonColor: colorPicker('primary'),
         }).then(() => {
           navigate('/entrar');
         });
@@ -70,6 +70,7 @@ const SignUp = () => {
             icon: 'error',
             title: 'Oops...',
             text: 'Ocorreu um erro ao realizar o seu cadastro',
+            confirmButtonColor: colorPicker('primary'),
           });
         }
       });

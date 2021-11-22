@@ -9,6 +9,7 @@ import Input from '../shared/Input';
 import Form from '../shared/Form';
 import { signIn, getUser } from '../../services/gratibox.services';
 import UserContext from '../../contexts/UserContext';
+import colorPicker from '../../styles/utils/colorPicker';
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -57,12 +58,14 @@ const SignIn = () => {
             icon: 'error',
             title: 'Oops...',
             text: 'Dados preenchidos incorretamente',
+            confirmButtonColor: colorPicker('primary'),
           });
         } else {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
             text: 'Ocorreu um erro ao entrar no GratiBox, tente novamente mais tarde',
+            confirmButtonColor: colorPicker('primary'),
           });
         }
         setIsLoading(false);

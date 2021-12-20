@@ -13,10 +13,10 @@ You can check the application in production here: [https://gratibox-gules.vercel
 
 ```bash
 # Clone this repository
-$ git clone <https://github.com/victordurco/gratibox>
+$ git clone https://github.com/glappsmobile/repo_provas_front
 
 # Access the project folder cmd/terminal
-$ cd gratibox
+$ cd repo_provas_front
 
 # Install the dependencies
 $ npm install
